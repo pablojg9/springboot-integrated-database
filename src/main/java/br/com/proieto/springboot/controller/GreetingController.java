@@ -4,11 +4,10 @@ import br.com.proieto.springboot.model.Usuario;
 import br.com.proieto.springboot.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class GreetingController {
@@ -31,9 +30,14 @@ public class GreetingController {
 
         usuarioRepository.save(usuario);
 
-
         return "Olá, Mundo! " + name;
-
     }
 
+    @GetMapping(value = "/lista") // Primeiro método de API
+    @ResponseBody //Retorna os dados para o corpo da resposta
+    public ResponseEntity<List<Usuario>> listUser() {
+        List<Usuario> usuarios = usuarioRepository.findAll(); // Busca todos os dados do banco de dados
+
+        return new ResponseEntity<List<Usuario>>(usuarios, HttpStatus.OK);
+    }
 }
