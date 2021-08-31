@@ -49,6 +49,14 @@ public class GreetingController {
         return new ResponseEntity<Usuario>(user, HttpStatus.CREATED);
     }
 
+    @PutMapping(value = "/update")
+    @ResponseBody
+    public ResponseEntity<Usuario> updateUser(@RequestBody Usuario usuario) {
+        Usuario user = usuarioRepository.saveAndFlush(usuario);
+
+        return  new ResponseEntity<Usuario>(user, HttpStatus.OK);
+    }
+
     @DeleteMapping(value = "/delete")
     @ResponseBody
     public ResponseEntity<String> delete(@RequestParam Long id){
