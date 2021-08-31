@@ -40,4 +40,22 @@ public class GreetingController {
 
         return new ResponseEntity<List<Usuario>>(usuarios, HttpStatus.OK);
     }
+
+    @PostMapping(value = "/salvar") // Mapea a url
+    @ResponseBody // descrição da resposta
+    public ResponseEntity<Usuario> salvar(@RequestBody Usuario usuario) { //recebe os dados para salvar
+        Usuario user = usuarioRepository.save(usuario);
+
+        return new ResponseEntity<Usuario>(user, HttpStatus.CREATED);
+    }
+
+    @DeleteMapping(value = "/delete")
+    @ResponseBody
+    public ResponseEntity<Usuario> delete(@RequestBody Usuario usuario){
+        usuarioRepository.delete(usuario); // chamando o método delete() para deletar pelo id;
+
+        return new ResponseEntity<Usuario>(usuario, HttpStatus.OK);
+    }
+
+
 }
