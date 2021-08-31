@@ -59,7 +59,7 @@ public class GreetingController {
 
     @GetMapping(value = "/buscaruserid")
     @ResponseBody
-    public ResponseEntity<Usuario> search(@RequestParam(name = "iduser") Long iduser) {
+    public ResponseEntity<Usuario> search(@RequestParam(name = "iduser") Long iduser) { //Recebe os dados para consultar
         Usuario user = usuarioRepository.findById(iduser).get();
 
         return new ResponseEntity<Usuario>(user, HttpStatus.OK);
