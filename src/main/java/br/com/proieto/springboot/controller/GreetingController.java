@@ -54,7 +54,7 @@ public class GreetingController {
     public ResponseEntity<Usuario> delete(@RequestBody Usuario usuario){
         usuarioRepository.delete(usuario); // chamando o método delete() para deletar pelo id;
 
-        return new ResponseEntity<Usuario>(usuario, HttpStatus.OK);
+        return new ResponseEntity<Usuario>(usuario, HttpStatus.OK); //Retornando para que foi deletado!
     }
 
 
