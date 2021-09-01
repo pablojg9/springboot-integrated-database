@@ -79,6 +79,14 @@ public class GreetingController {
 
     }
 
+    @GetMapping(value = "/buscarname") // mapeia a url
+    @ResponseBody
+    public ResponseEntity<List<Usuario>> buscarName(@RequestParam(name = "name") String name){
+        List<Usuario> user  = usuarioRepository.buscarNome(name);
+
+        return new ResponseEntity<List<Usuario>>(user, HttpStatus.OK);
+
+    }
 
 
 }
