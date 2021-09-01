@@ -53,6 +53,7 @@ public class GreetingController {
     @ResponseBody
     public ResponseEntity<?> updateUser(@RequestBody Usuario usuario) {
 
+        //SE o usuario estiver vazio não será encontrando
         if (usuario.getId() == null) {
             return new ResponseEntity<String>("ID NÃO FOI INFORMADO!", HttpStatus.OK);
         }
@@ -65,6 +66,7 @@ public class GreetingController {
     @DeleteMapping(value = "/delete")
     @ResponseBody
     public ResponseEntity<String> delete(@RequestParam Long id){
+        // Chamando o método deleteById() para ele deletar pelo id do banco
         usuarioRepository.deleteById(id);
 
         return new ResponseEntity<String>("User deletado com sucesso!", HttpStatus.OK); //Retornando para que foi deletado!
@@ -81,8 +83,9 @@ public class GreetingController {
 
     @GetMapping(value = "/buscarname") // mapeia a url
     @ResponseBody
+    //Chando o ? para que ele retorne qualquer coisa mesmo não sendo o Usuario
     public ResponseEntity<? extends Object> buscarName(@RequestParam(name = "name") String name){
-        List<Usuario> user  = usuarioRepository.buscarNome(name);
+        List<Usuario> user  = usuarioRepository.buscarNome(name.trim().toUpperCase());
 
         return new ResponseEntity<List<?>>(user, HttpStatus.OK);
     }
