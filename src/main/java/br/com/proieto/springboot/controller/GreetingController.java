@@ -89,9 +89,10 @@ public class GreetingController {
         List<Usuario> user  = usuarioRepository.buscarNome(name.trim().toUpperCase());
 
         if (user.isEmpty()) {
-            return new ResponseEntity<String>("User, não encontrado!", HttpStatus.OK);
-        }
+            String invalid = "Usuario não foi encontrado! \nTente outro nome";
 
+            return new ResponseEntity<String>(invalid, HttpStatus.OK);
+        }
         return new ResponseEntity<List<?>>(user, HttpStatus.OK);
     }
 }
