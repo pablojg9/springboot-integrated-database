@@ -85,7 +85,12 @@ public class GreetingController {
     @ResponseBody
     //Chando o ? para que ele retorne qualquer coisa mesmo não sendo o Usuario
     public ResponseEntity<? extends Object> buscarName(@RequestParam(name = "name") String name){
+
         List<Usuario> user  = usuarioRepository.buscarNome(name.trim().toUpperCase());
+
+        if (user.isEmpty()) {
+            return new ResponseEntity<String>("User, não encontrado!", HttpStatus.OK);
+        }
 
         return new ResponseEntity<List<?>>(user, HttpStatus.OK);
     }
