@@ -69,7 +69,7 @@ public class GreetingController {
         // Chamando o método deleteById() para ele deletar pelo id do banco
         usuarioRepository.deleteById(id);
 
-        return new ResponseEntity<String>("User deletado com sucesso!", HttpStatus.OK); //Retornando para que foi deletado!
+        return new ResponseEntity<String>("User deletado com sucesso!", HttpStatus.OK); //Retornando para que foi deletado
     }
 
     @GetMapping(value = "/buscaruserid")
