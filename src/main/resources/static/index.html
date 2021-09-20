@@ -41,14 +41,36 @@
                        <div class="modal-body">
                            <form>
                                <div class="mb-3">
-                                   <label for="nomeText" class="col-form-label">Buscar pelo nome:</label>
-                                   <input type="text" class="form-control" id="nomeText">
+                                   <label for="buscaNome" class="col-form-label">Buscar pelo nome:</label>
+                                   <input type="text" class="form-control" id="buscaNome">
                                </div>
                            </form>
                        </div>
                        <div class="modal-footer">
                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Sair</button>
-                           <button type="button" class="btn btn-success" id="buscaNome">Pesquisar</button>
+                           <button type="button" class="btn btn-success" id="pesquisar">Pesquisar</button>
+
+                           <table class="table">
+                               <thead>
+                               <tr>
+                                   <th scope="col">#</th>
+                                   <th scope="col">First</th>
+                                   <th scope="col">Last</th>
+                                   <th scope="col">Handle</th>
+                               </tr>
+                               </thead>
+                               <tbody>
+                               <tr>
+                                   <td></td>
+                               </tr>
+                               <tr>
+                                  <td></td>
+                               </tr>
+                               <tr>
+                                   <td></td>
+                               </tr>
+                               </tbody>
+                           </table>
                        </div>
                    </div>
                </div>
@@ -68,7 +90,7 @@
                 method: "POST",
                 url: "salvar",
                 data: JSON.stringify({
-                    id: id,
+                    name: id,
                     nome: nome,
                     idade: idade,
                 }),
@@ -83,26 +105,24 @@
         }
 
         const pesquisarUsuario = () => {
-            const id = $('#id').val();
             const buscaNome = $('#buscaNome').val();
-            const idade = $('#idade').val();
 
-            $.ajax({
-                method: "GET",
-                url: "buscarname",
-                data: JSON.stringify({
-                    id: id,
-                    nome: buscaNome,
-                    idade: idade
-                }),
-                contentType: "application/json; charset=utf-8",
-                success: (response) => {
-                    $('#buscaNome').val(response.nome)
-                }
-            }).fail((xhr, status, errorThown) => {
-                alert(`ERROR ${xhr.responseText}`)
-            });
-        }
+            if (buscaNome != null && !buscaNome.trim()) {
+                $.ajax({
+                    method: "GET",
+                    url: "buscarname",
+                    data: "name=" + buscaNome,
+                    success: (response) => {
+
+                    }
+                }).fail((xhr, status, errorThown) => {
+                    alert(`ERROR ${xhr.responseText}`)
+                });
+            }
+            }
+
+
+
 
     </script>
 </body>
