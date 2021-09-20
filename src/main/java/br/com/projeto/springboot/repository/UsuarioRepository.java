@@ -1,6 +1,6 @@
-package br.com.proieto.springboot.repository;
+package br.com.projeto.springboot.repository;
 
-import br.com.proieto.springboot.model.Usuario;
+import br.com.projeto.springboot.model.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

@@ -1,7 +1,7 @@
-package br.com.proieto.springboot.controller;
+package br.com.projeto.springboot.controller;
 
-import br.com.proieto.springboot.model.Usuario;
-import br.com.proieto.springboot.repository.UsuarioRepository;
+import br.com.projeto.springboot.model.Usuario;
+import br.com.projeto.springboot.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
